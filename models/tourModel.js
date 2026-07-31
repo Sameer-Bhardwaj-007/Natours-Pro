@@ -178,10 +178,10 @@ tourSchema.pre(/^find/, function () {
   });
 });
 
-tourSchema.post(/^find/, function (docs) {
-  console.log(`Query took ${Date.now() - this.start} milliseconds`);
-  // console.log(docs)
-});
+// tourSchema.post(/^find/, function (docs) {
+//   console.log(`Query took ${Date.now() - this.start} milliseconds`);
+//   // console.log(docs)
+// });
 //AGGREGATION MIDDLEWARE
 // tourSchema.pre('aggregate', function () {
 //   this.pipeline().unshift({

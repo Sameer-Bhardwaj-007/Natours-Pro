@@ -6,7 +6,7 @@ export const bookTour = async (tourId) => {
   try {
     // 1) Get Razorpay Order
     const { data } = await axios.get(
-      `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`,
+      `/api/v1/bookings/checkout-session/${tourId}`,
     );
 
     const order = data.session;
@@ -46,7 +46,7 @@ export const bookTour = async (tourId) => {
         try {
           const verifyRes = await axios({
             method: 'POST',
-            url: 'http://127.0.0.1:3000/api/v1/bookings/verify-payment',
+            url: '/api/v1/bookings/verify-payment',
             data: {
               tourId,
               razorpayOrderId: response.razorpay_order_id,
