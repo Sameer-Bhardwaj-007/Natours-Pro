@@ -16,12 +16,14 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, 'Please provide your email'],
-    unique: true,
     lowercase: true,
     validate: [validator.isEmail, 'Please provide a valid email'],
   },
 
-  photo: String,
+  photo: {
+    type: String,
+    default: 'default.jpg',
+  },
   role: {
     type: String,
     enum: ['user', 'guide', 'lead-guide', 'admin'],
@@ -66,16 +68,16 @@ userSchema.pre('save', async function () {
   this.passwordConfirm = undefined;
 });
 
-userSchema.pre(/^find/, function () {
-  //this points to the current query
-  this.find({ active: { $ne: false } });
-});
-
 userSchema.pre('save', function (next) {
   if (!this.isModified('password') || this.isNew) {
     return;
   }
   this.passwordChangedAt = Date.now() - 1000;
+});
+
+userSchema.pre(/^find/, function () {
+  //this points to the current query
+  this.find({ active: { $ne: false } });
 });
 
 userSchema.methods.correctPassword = async function (
@@ -108,12 +110,16 @@ userSchema.methods.createPasswordResetToken = function () {
     .update(resetToken)
     .digest('hex');
 
-  console.log({ resetToken }, this.passwordResetToken);
-
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
 
   return resetToken;
 };
+
+userSchema.virtual('bookings', {
+  ref: 'Booking',
+  foreignField: 'user',
+  localField: '_id',
+});
 
 const User = mongoose.model('User', userSchema);
 

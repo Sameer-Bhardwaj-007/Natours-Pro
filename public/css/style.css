@@ -237,6 +237,16 @@ body {
 .btn--green::after {
   background-color: #55c57a;
 }
+.btn--grey {
+  background-color: #999;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.btn--grey,
+.btn--grey:disabled {
+  color: #fff !important;
+}
 
 .btn--small {
   padding: 1.25rem 3rem !important;
@@ -607,6 +617,13 @@ body {
   overflow-x: scroll;
   -ms-scroll-snap-type: x mandatory;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.reviews::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 .reviews__card {
   width: 30rem;
@@ -830,6 +847,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  justify-content: flex-end;
 }
 .footer__nav li {
   margin-left: 1.5rem;

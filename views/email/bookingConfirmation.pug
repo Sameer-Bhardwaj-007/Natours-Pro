@@ -1,0 +1,35 @@
+extends baseEmail
+
+block content
+  p Hi #{firstName},
+
+  p Your booking has been confirmed successfully. Thank you for choosing Natours!
+
+  table.btn.btn-primary(role='presentation' border='0' cellpadding='0' cellspacing='0')
+    tbody
+      tr
+        td(align='left')
+          table(role='presentation' border='0' cellpadding='0' cellspacing='0')
+            tbody
+              tr
+                td
+                  a(href=`${url}` target='_blank') View My Bookings
+
+  br
+
+  p
+    strong Tour: 
+    span #{tour}
+
+  p
+    strong Price: 
+    span ₹#{price}
+
+  p
+    strong Status: 
+    span Confirmed ✅
+
+  p We hope you have an amazing experience exploring with Natours.
+
+  p Cheers,
+  p - The Natours Team

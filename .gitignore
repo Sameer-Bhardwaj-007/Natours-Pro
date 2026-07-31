@@ -23,3 +23,9 @@ build/
 # Operating System
 .DS_Store
 Thumbs.db
+
+# cache file
+.cache/
+
+public/js/bundle.js
+public/js/bundle.js.map
