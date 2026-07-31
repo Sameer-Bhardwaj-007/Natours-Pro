@@ -6,8 +6,6 @@ block append head
     link(href='https://api.mapbox.com/mapbox-gl-js/v3.27.0/mapbox-gl.css', rel='stylesheet')
     script(src='https://checkout.razorpay.com/v1/checkout.js')
     //- script(src='/js/mapbox.js')
-    script. 
-        const MAPBOX_TOKEN='!{mapboxToken}'
 
 mixin overviewBox(label, text, icon)
     .overview-box__detail
@@ -86,7 +84,10 @@ block content
                 )
 
     section.section-map
-        #map(data-locations=`${JSON.stringify(tour.locations)}`)
+        #map(
+            data-locations=`${JSON.stringify(tour.locations)}`
+            data-mapbox-token=mapboxToken
+        )
 
     section.section-reviews
         .reviews
