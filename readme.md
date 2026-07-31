@@ -1,4 +1,4 @@
-# 🌍 Natours
+# 🌍 Natours Pro
 
 A full-stack tour booking web application where users can discover adventure tours, view tour details on interactive maps, securely book tours online, and manage their bookings.
 
@@ -8,7 +8,7 @@ A full-stack tour booking web application where users can discover adventure tou
 
 ## 📖 About
 
-Natours is a production-ready tour booking platform built using **Node.js**, **Express.js**, **MongoDB**, and **Pug**. It provides secure authentication, online payments through Razorpay, interactive Mapbox maps, email notifications via SendGrid, and a responsive user interface.
+Natours Pro is a production-ready tour booking platform built using **Node.js**, **Express.js**, **MongoDB**, and **Pug**. It provides secure authentication, online payments through Razorpay, interactive Mapbox maps, email notifications via SendGrid, and a responsive user interface.
 
 ---
 
@@ -120,7 +120,7 @@ https://your-render-url.onrender.com
 Clone the repository
 
 ```bash
-git clone https://github.com/Sameer-Bhardwaj-007/Natours.git
+git clone https://github.com/Sameer-Bhardwaj-007/Natours-Pro.git
 ```
 
 Move into the project
