@@ -90,10 +90,10 @@ exports.verifyPayment = catchAsync(async (req, res, next) => {
 
   const user = await User.findById(req.user.id);
 
-  await new Email(
-    user,
-    `${req.protocol}://${req.get('host')}/my-tours`,
-  ).sendBookingConfirmation(tour);
+  // await new Email(
+  //   user,
+  //   `${req.protocol}://${req.get('host')}/my-tours`,
+  // ).sendBookingConfirmation(tour);
 
   res.status(201).json({
     status: 'success',
