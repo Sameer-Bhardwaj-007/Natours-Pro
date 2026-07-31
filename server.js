@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable import/no-extraneous-dependencies */
-
 const dns = require('dns');
 
-// Force Node to use Google DNS instead of 127.0.0.1
-dns.setServers(['8.8.8.8', '8.8.4.4']);
+if (process.env.NODE_ENV !== 'production') {
+  // Fix local Windows DNS issue only
+  dns.setServers(['8.8.8.8', '8.8.4.4']);
+}
 
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
