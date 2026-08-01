@@ -47,8 +47,6 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 
 // Verify payment & create booking
 exports.verifyPayment = catchAsync(async (req, res, next) => {
-  console.log('=== VERIFY PAYMENT HIT ===');
-
   const { razorpayOrderId, razorpayPaymentId, razorpaySignature, tourId } =
     req.body;
 
@@ -62,16 +60,12 @@ exports.verifyPayment = catchAsync(async (req, res, next) => {
     return next(new AppError('Payment verification failed.', 400));
   }
 
-  console.log('✅ Signature verified');
-
   // Find tour
   const tour = await Tour.findById(tourId);
 
   if (!tour) {
     return next(new AppError('No tour found with that ID.', 404));
   }
-
-  console.log('✅ Tour found');
 
   // Prevent duplicate bookings
   const existingBooking = await Booking.findOne({
@@ -86,8 +80,6 @@ exports.verifyPayment = catchAsync(async (req, res, next) => {
     });
   }
 
-  console.log('✅ No existing booking');
-
   // Create booking
   const booking = await Booking.create({
     tour: tour._id,
@@ -95,8 +87,6 @@ exports.verifyPayment = catchAsync(async (req, res, next) => {
     price: tour.price,
     paid: true,
   });
-
-  console.log('✅ Booking created');
 
   // Send response immediately
   res.status(201).json({
@@ -108,14 +98,10 @@ exports.verifyPayment = catchAsync(async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
 
-    console.log('📧 Sending booking confirmation email...');
-
     await new Email(
       user,
       `${req.protocol}://${req.get('host')}/my-tours`,
     ).sendBookingConfirmation(tour);
-
-    console.log('✅ Booking confirmation email sent.');
   } catch (err) {
     console.error('❌ Booking email failed:', err);
   }

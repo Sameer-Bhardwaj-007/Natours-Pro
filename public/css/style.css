@@ -1249,6 +1249,24 @@ body {
   border-radius: 5px;
 }
 
+.login-form p {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #777;
+}
+
+.login-form p a {
+  color: #55c57a;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 0.4rem;
+}
+
+.login-form p a:hover {
+  text-decoration: underline;
+}
+
 .form__input {
   display: block;
   font-family: inherit;

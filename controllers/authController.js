@@ -53,14 +53,15 @@ exports.signup = catchAsync(async (req, res, next) => {
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
     passwordChangedAt: req.body.passwordChangedAt,
-    role: req.body.role,
   });
-  const url = `${req.protocol}://${req.get('host')}/me`;
+  const url = `${req.protocol}://${req.get('host')}/login`;
   // console.log(url);
   await new Email(newUser, url).sendWelcome();
 
-  //Creating JWT
-  createSendToken(newUser, 201, res);
+  res.status(201).json({
+    status: 'success',
+    message: 'Account created successfully. Please log in.',
+  });
 });
 
 exports.login = catchAsync(async (req, res, next) => {
