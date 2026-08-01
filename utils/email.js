@@ -63,16 +63,7 @@ module.exports = class Email {
     };
 
     // 3) Send email
-    // await this.newTransport().sendMail(mailOptions);
-    const transporter = this.newTransport();
-
-    console.log('Verifying SMTP...');
-    await transporter.verify();
-    console.log('SMTP verified');
-
-    console.log('Sending email...');
-    const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent:', info.messageId);
+    await this.newTransport().sendMail(mailOptions);
   }
 
   async sendWelcome() {
