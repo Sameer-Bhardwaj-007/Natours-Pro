@@ -2,7 +2,7 @@
 
 A full-stack tour booking web application where users can discover adventure tours, view tour details on interactive maps, securely book tours online, and manage their bookings.
 
-🚀 **Live Demo:** https://your-render-url.onrender.com
+🚀 **Live Demo:** https://natours-pro-evkb.onrender.com
 
 ---
 
@@ -111,7 +111,7 @@ Natours Pro is a production-ready tour booking platform built using **Node.js**,
 
 **Application**
 
-https://your-render-url.onrender.com
+https://natours-pro-evkb.onrender.com
 
 ---
 
