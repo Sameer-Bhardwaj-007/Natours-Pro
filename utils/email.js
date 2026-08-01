@@ -63,16 +63,7 @@ module.exports = class Email {
     };
 
     // 3) Send email
-    console.log('Creating transporter...');
-    const transporter = this.newTransport();
-
-    console.log('Transporter created.');
-
-    console.log('Sending mail...');
-    const info = await transporter.sendMail(mailOptions);
-
-    console.log('Mail sent:', info.messageId);
-    // await this.newTransport().sendMail(mailOptions);
+    await this.newTransport().sendMail(mailOptions);
   }
 
   async sendWelcome() {
