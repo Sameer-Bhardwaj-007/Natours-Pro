@@ -22,8 +22,11 @@ module.exports = class Email {
         secure: false,
         auth: {
           user: 'apikey',
-          pass: process.env.SENDGRID_PASSWORD, // SendGrid API Key
+          pass: process.env.SENDGRID_PASSWORD,
         },
+        connectionTimeout: 10000,
+        greetingTimeout: 10000,
+        socketTimeout: 10000,
       });
     }
 
@@ -60,7 +63,16 @@ module.exports = class Email {
     };
 
     // 3) Send email
-    await this.newTransport().sendMail(mailOptions);
+    console.log('Creating transporter...');
+    const transporter = this.newTransport();
+
+    console.log('Transporter created.');
+
+    console.log('Sending mail...');
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log('Mail sent:', info.messageId);
+    // await this.newTransport().sendMail(mailOptions);
   }
 
   async sendWelcome() {
